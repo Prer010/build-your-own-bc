@@ -45,11 +45,16 @@ int vec_push(t_vec *v, const void *elem) {
 
 void *vec_back(t_vec *v) {
     if (v->size == 0) return NULL;
-    return (char*)v->data + (v->size - 1) * v->elem;
+    return (char*)v->data + (v->size - 1) * v->elem; // return pointer to last element
 }
 
 int vec_pop(t_vec *v) {
     if (v->size == 0) return -1;
     v->size--;
     return 0;
+}
+
+void *vec_at(const t_vec *v, size_t i) {
+    if (i >= v->size) return NULL;
+    return (char*)v->data + i * v->elem;
 }

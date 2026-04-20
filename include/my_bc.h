@@ -26,7 +26,7 @@ void vec_free(t_vec *v);
 int  vec_push(t_vec *v, const void *elem);
 void *vec_back(t_vec *v);
 int   vec_pop(t_vec *v);
-void *vec_at(t_vec *v, size_t i);
+void *vec_at(const t_vec *v, size_t i);
 
 // tokens
 typedef enum e_toktype {
@@ -56,6 +56,9 @@ int lex(const char *s, t_vec *out_tokens);
 // Shunting-yard: infix -> rpn
 // Return 0 on success, non-zero: error (set parse error)
 int to_rpn(const t_vec *tokens, t_vec *out_rpn);
+
+// Evaluate rpn tokens, return result (undefined if error, check parse error)
+int evaluate(const t_vec *rpn);
 
 
 #endif /* MY_BC_H */
